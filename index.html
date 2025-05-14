@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Ibrahim | Data Scientist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --text: #333333;
+            --text-light: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: 3rem;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p.subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* Summary Section */
+        #summary p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.8rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-color: rgba(67, 97, 238, 0.2);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .skill-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Education Section */
+        .education-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .education-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+        }
+
+        .education-item p {
+            color: var(--text-light);
+        }
+
+        /* Certifications Section */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .certification-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .certification-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .certification-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .experience-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .experience-content {
+            flex: 1;
+        }
+
+        .experience-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .experience-content .date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .experience-content p {
+            color: var(--text);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+
+        .project-content {
+            padding: 1.8rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .project-content .date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .project-content p {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tag {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 3rem;
+        }
+
+        footer h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .header-content {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 5rem 1rem 3rem;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            header p.subtitle {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 2rem;
+            }
+            
+            .experience-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .experience-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            footer {
+                clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+                padding: 3rem 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+            
+            .contact-links a {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+            
+            .projects-grid, .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            footer {
+                clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Mohamed Ibrahim</h1>
+            <p class="subtitle">Data Science & Machine Learning Specialist</p>
+            <div class="contact-links">
+                <a href="tel:+916383870433"><i class="fas fa-phone"></i> +91 6383870433</a>
+                <a href="mailto:mohamedibrahimb2004@gmail.com"><i class="fas fa-envelope"></i> mohamedibrahimb2004@gmail.com</a>
+                <a href="https://www.linkedin.com/in/mohamed-ibrahim-1046562a5"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/Mohamedibrahim-git"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="summary">
+            <h2>Professional Summary</h2>
+            <p>Innovative Data Scientist with expertise in machine learning algorithms, statistical modeling, and data visualization. Passionate about transforming complex data into actionable insights that drive business decisions. Proven track record of developing high-accuracy predictive models using techniques like regression, clustering, and classification. Strong foundation in data preprocessing, feature engineering, and model evaluation with hands-on experience in Python, Pandas, and Scikit-Learn ecosystems.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-python"></i>
+                    <h3>Programming</h3>
+                    <p>Advanced Python, Basic Java, SQL</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Data Analysis</h3>
+                    <p>Pandas, NumPy, SciPy, Statsmodels</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Database</h3>
+                    <p>MySQL, Data Warehousing</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Machine Learning</h3>
+                    <p>Scikit-Learn, TensorFlow, Model Evaluation</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Visualization</h3>
+                    <p>Matplotlib, Seaborn, Power BI</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Tools</h3>
+                    <p>Jupyter, Google Colab, Excel, Git</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>B.Tech Degree in Artificial Intelligence and Data Science</h3>
+                <p>Dhanalakshmi Srinivasan University | Expected 2026</p>
+                <p>Specialized coursework in machine learning, deep learning, statistical analysis, and big data technologies.</p>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2>Certifications & Training</h2>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <h3>Data Analysis Internship</h3>
+                    <p>NextGen Software Solution | 2024</p>
+                    <p>Completed intensive internship focusing on real-world data science applications and model deployment.</p>
+                </div>
+                <div class="certification-card">
+                    <h3>Python Programming</h3>
+                    <p>Great Learning | 2023</p>
+                    <p>Mastered Python fundamentals, OOP concepts, and data structures for data science applications.</p>
+                </div>
+                <div class="certification-card">
+                    <h3>Data Analytics</h3>
+                    <p>Accenture | 2023</p>
+                    <p>Training in advanced analytics techniques and business intelligence tools.</p>
+                </div>
+                <div class="certification-card">
+                    <h3>Advanced Data Science</h3>
+                    <p>NextFutureTech | 2024</p>
+                    <p>Comprehensive training in machine learning algorithms and predictive modeling.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <div class="experience-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="experience-content">
+                    <h3>Data Analyst Intern</h3>
+                    <span class="date">NextGen Software Solution (Remote) | August 2024 - October 2024</span>
+                    <p>Conducted exploratory data analysis on large datasets to uncover trends and patterns. Developed interactive dashboards in Power BI to visualize key metrics. Automated data cleaning processes using Python scripts, improving efficiency by 40%. Collaborated with cross-functional teams to deliver data-driven recommendations that optimized business strategies.</p>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="experience-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="experience-content">
+                    <h3>Hackathon Achievement</h3>
+                    <span class="date">InnoGen'25 Mega Hackathon by ARCZON Industries | January 2025</span>
+                    <p>Secured 3rd place among multiple competitive teams in the hackathon. Developed "AI Career Navigator", an intelligent platform featuring:</p>
+                    <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: var(--text);">
+                        <li>Personalized career guidance system</li>
+                        <li>Automated resume analysis with skill gap detection</li>
+                        <li>Intelligent job recommendations engine</li>
+                        <li>Interactive chatbot with voice assistant integration</li>
+                    </ul>
+                    <p style="margin-top: 0.8rem;">Implemented advanced NLP techniques and machine learning algorithms to provide tailored career advice and improve user engagement.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="project-content">
+                        <h3>House Price Prediction</h3>
+                        <span class="date">December 2024</span>
+                        <p>Developed a machine learning model using Multiple Linear Regression to predict housing prices with 92% accuracy. Implemented feature engineering techniques to enhance model performance and created interactive visualizations to explain price determinants.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Scikit-Learn</span>
+                            <span class="project-tag">Regression</span>
+                            <span class="project-tag">EDA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="project-content">
+                        <h3>Customer Segmentation</h3>
+                        <span class="date">January 2025</span>
+                        <p>Implemented K-Means clustering to segment customers into distinct groups based on purchasing behavior and demographics. Developed targeted marketing strategies for each segment, resulting in 25% improvement in campaign conversion rates.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Clustering</span>
+                            <span class="project-tag">K-Means</span>
+                            <span class="project-tag">PCA</span>
+                            <span class="project-tag">Visualization</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="project-content">
+                        <h3>AI-Driven Resume Analysis & ATS Compatibility System</h3>
+                        <span class="date">March 2025</span>
+                        <p>Built a web app using Python and Flask to analyze resumes, extract skills, predict job titles, and calculate ATS scores. Implemented NLP and machine learning to match resumes with job descriptions and provide visual insights through interactive charts.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Flask</span>
+                            <span class="project-tag">NLP</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Data Visualization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h2>Let's Connect</h2>
+            <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/mohamed-ibrahim-1046562a5"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/Mohamedibrahim-git"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="mailto:mohamedibrahimb2004@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="copyright">© 2025 Mohamed Ibrahim. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
